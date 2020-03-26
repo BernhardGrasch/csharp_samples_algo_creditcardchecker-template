@@ -11,16 +11,30 @@ namespace CreditCardChecker
         public static bool IsCreditCardValid(string creditCardNumber)
         {
             bool isValid = false;
-            int number = 0;
+            int numberEven = 0, sumEven = 0;
+            int numberOdd = 0, sumOdd = 0;
+            int helper = 0;
 
             if (creditCardNumber.Length == 15)
             {
                 for (int i = 0; i < creditCardNumber.Length; i++)
                 {
-                    
+                    if(i == 0 || i % 2 == 0)
+                    {
+                        helper = Convert.ToInt32(creditCardNumber[i]);
+                        numberEven = helper * 2;
+                        sumEven++;
+                    }
+                    else
+                    {
+                        helper = Convert.ToInt32(creditCardNumber[i]);
+                        numberOdd += helper;
+                        sumOdd++;
+                    }
                 }
             }
-
+            //if(sumOdd >= CalculateCheckDigit(sumOdd, sumEven) &&
+            //    sumOdd >= CalculateCheckDigit(sumOdd, sumEven))
             return isValid;
         }
 
